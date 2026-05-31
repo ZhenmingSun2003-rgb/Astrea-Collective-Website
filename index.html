@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ASTREA Collective</title>
+
+<link rel="icon"
+    type="image/png"
+    href="星螺座-白-小图标.png">
+<style>
+
+@font-face {
+    font-family: "Alimama";
+    src: url("./AlimamaFangYuanTiVF-Thin.ttf");
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Alimama",sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    background:#07131D;
+    color:white;
+}
+
+/* ================= 星空背景 ================= */
+
+.stars{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-3;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 4s infinite;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.2;
+    }
+    50%{
+        opacity:1;
+    }
+}
+
+/* ================= 星云 ================= */
+
+.nebula{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(140px);
+    opacity:.25;
+    z-index:-2;
+}
+
+.nebula1{
+    background:#6f5cff;
+    top:-100px;
+    left:-100px;
+    animation:float1 15s infinite alternate;
+}
+
+.nebula2{
+    background:#59d8ff;
+    bottom:-100px;
+    right:-100px;
+    animation:float2 20s infinite alternate;
+}
+
+@keyframes float1{
+    from{transform:translate(0,0);}
+    to{transform:translate(100px,50px);}
+}
+
+@keyframes float2{
+    from{transform:translate(0,0);}
+    to{transform:translate(-100px,-80px);}
+}
+
+/* ================= 流星 ================= */
+
+.meteor{
+    position:fixed;
+    width:250px;
+    height:2px;
+    background:linear-gradient(
+        to right,
+        transparent,
+        white
+    );
+
+    transform:rotate(-35deg);
+
+    animation:meteor 8s infinite;
+}
+
+@keyframes meteor{
+    0%{
+        top:-100px;
+        left:-300px;
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    30%{
+        top:400px;
+        left:100%;
+        opacity:0;
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+
+/* ================= 主体 ================= */
+
+.container{
+    width:min(92vw,700px);
+    margin:auto;
+    padding:40px 0;
+}
+
+/* ================= Logo ================= */
+
+.logo-area{
+    text-align:center;
+    margin-top:20px;
+}
+
+.logo{
+    width:120px;
+
+    animation:
+    breathe 4s infinite ease-in-out;
+
+    filter:
+    drop-shadow(0 0 20px #59d8ff)
+    drop-shadow(0 0 50px #59d8ff);
+}
+
+@keyframes breathe{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+.title{
+    margin-top:18px;
+    font-size:32px;
+}
+
+.subtitle{
+    margin-top:12px;
+    opacity:.85;
+    font-size:18px;
+}
+
+.subtitle-en{
+    opacity:.55;
+    margin-top:5px;
+}
+
+/* ================= 卡片 ================= */
+
+.card{
+    margin-top:18px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card-header{
+
+    cursor:pointer;
+
+    padding:18px 20px;
+
+    font-size:18px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.card-content{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:max-height .5s ease;
+
+    text-align:center;
+}
+
+.card.active .card-content{
+    max-height:900px;
+}
+
+.inner{
+    padding:25px;
+}
+
+.qr{
+    width:250px;
+    max-width:90%;
+    border-radius:16px;
+}
+
+.kook-btn{
+
+    display:inline-block;
+
+    margin-top:12px;
+
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #59d8ff,
+        #6f5cff
+    );
+
+    transition:.3s;
+}
+
+.kook-btn:hover{
+    transform:scale(1.05);
+}
+
+.dev{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.desc{
+    opacity:.8;
+    line-height:1.8;
+}
+
+.footer{
+    text-align:center;
+    margin-top:40px;
+    opacity:.5;
+    padding-bottom:40px;
+}
+
+.tagline{
+    margin-top:20px;
+    opacity:.7;
+    text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="nebula nebula1"></div>
+<div class="nebula nebula2"></div>
+
+<div class="meteor"></div>
+
+<div class="container">
+
+<div class="logo-area">
+
+<img src="星螺座-白.png" class="logo">
+
+<h1 class="title">ASTREA Collective</h1>
+
+<div class="subtitle">
+我们相遇于群星之间
+</div>
+
+<div class="subtitle-en">
+We meet among the stars
+</div>
+
+<div class="tagline">
+✨ 欢迎来到泰拉星螺协会
+</div>
+
+</div>
+
+<!-- 微信群 -->
+
+<div class="card">
+
+<div class="card-header">
+<span>💬 加入微信群聊</span>
+<span>▼</span>
+</div>
+
+<div class="card-content">
+<div class="inner">
+
+<img src="群二维码.jpg" class="qr">
+
+<p style="margin-top:20px;">
+二维码失效请联系管理员
+</p>
+
+</div>
+</div>
+
+</div>
+
+<!-- KOOK -->
+
+<div class="card">
+
+<div class="card-header">
+<span>🎧 KOOK语音频道</span>
+<span>▼</span>
+</div>
+
+<div class="card-content">
+<div class="inner">
+
+<p>加入实时语音频道</p>
+
+<a
+class="kook-btn"
+href="https://kook.vip/L0OPEE"
+target="_blank"
+>
+进入KOOK频道
+</a>
+
+</div>
+</div>
+
+</div>
+
+<!-- 自我介绍卡 -->
+
+<div class="card">
+
+<div class="card-header">
+<span>🚀 ASTREA自我介绍卡</span>
+<span>▼</span>
+</div>
+
+<div class="card-content">
+<div class="inner">
+
+<div class="dev">
+锐意开发中
+</div>
+
+<div class="desc">
+
+未来你将能够：
+
+<br><br>
+
+✨ 创建个人介绍卡
+
+<br>
+
+🎮 展示游戏兴趣
+
+<br>
+
+🌎 寻找志同道合的伙伴
+
+<br>
+
+💫 快速认识新朋友
+
+<br><br>
+
+敬请期待
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+<!-- 管理员 -->
+
+<div class="card">
+
+<div class="card-header">
+<span>👤 联系管理员</span>
+<span>▼</span>
+</div>
+
+<div class="card-content">
+<div class="inner">
+
+<img src="admin.jpg" class="qr">
+
+<p style="margin-top:20px;">
+管理员：Irae
+</p>
+
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+
+ASTREA Collective
+
+<br><br>
+
+Connecting souls among the stars.
+
+</div>
+
+</div>
+
+<script>
+
+/* 星星 */
+
+const stars=document.querySelector(".stars");
+
+for(let i=0;i<180;i++){
+
+const s=document.createElement("div");
+
+s.className="star";
+
+s.style.left=Math.random()*100+"%";
+
+s.style.top=Math.random()*100+"%";
+
+s.style.animationDelay=
+Math.random()*4+"s";
+
+stars.appendChild(s);
+
+}
+
+/* 折叠 */
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.querySelector(".card-header")
+.addEventListener("click",()=>{
+
+card.classList.toggle("active");
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
