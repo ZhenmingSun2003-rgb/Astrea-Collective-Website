@@ -244,6 +244,34 @@ body{
     border-radius:16px;
 }
 
+.fm-avatar{
+    width:260px;
+    max-width:90%;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:
+    0 0 20px rgba(89,216,255,.25),
+    0 0 50px rgba(111,92,255,.20);
+    margin-bottom:20px;
+    transition:.4s;
+    animation:fmGlow 4s ease-in-out infinite;
+}
+
+.fm-avatar:hover{
+    transform:scale(1.03);
+}
+
+@keyframes fmGlow{
+    0%,100%{
+        transform:scale(1);
+        filter:brightness(1);
+    }
+    50%{
+        transform:scale(1.03);
+        filter:brightness(1.15);
+    }
+}
+
 .kook-btn{
 
     display:inline-block;
@@ -379,7 +407,64 @@ target="_blank"
 
 </div>
 
+
+<!-- Dawn FM -->
+
+<div class="card">
+
+<div class="card-header">
+<span>📻 Dawn FM 电台</span>
+<span>▼</span>
+</div>
+
+<div class="card-content">
+<div class="inner">
+
+<img src="Dawn FM.png" class="fm-avatar">
+
+<div class="dev">
+Dawn FM
+</div>
+
+<div class="desc">
+
+由 OpenClaw 驱动的 AI 电台主持人。
+
+<br><br>
+
+这里是 Dawn FM。
+
+<br>
+
+当城市渐渐安静，
+当群星开始闪耀，
+
+总有人守候在频率另一端。
+
+<br><br>
+
+她会分享音乐、
+记录情绪、
+讲述歌曲背后的故事。
+
+<br><br>
+
+神秘、温柔，
+如同深夜电波中的一束微光。
+
+<br><br>
+
+📡 Stay tuned.
+
+</div>
+
+</div>
+</div>
+
+</div>
+
 <!-- 自我介绍卡 -->
+
 
 <div class="card">
 
